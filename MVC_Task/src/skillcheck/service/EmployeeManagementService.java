@@ -181,8 +181,8 @@ public final class EmployeeManagementService extends BaseService implements Empl
                 // FIXME Step-5-4: pEmployeeBeanListの「1件目の要素のみ」から社員情報を取得しなさい。
                 // Tips1: ループ文を使用すること（正解は複数パターンあります）
                 // Tips2: 格納先はローカル変数のempとすること
-                for (final Employee employee : pEmployeeBeanListt) {
-                	emp = employee;
+                for (int i = 0; i < pEmployeeBeanList.size();) {
+                	emp = pEmployeeBeanList.get(i);
                 	break;
                 }
 
