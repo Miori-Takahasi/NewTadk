@@ -99,7 +99,14 @@ public final class EmployeeManagementService extends BaseService implements Empl
                 // Tips1: セット項目: 社員番号、パスワード、名前、メールアドレス、プログラミング言語、コメント
                 // Tips2: 正解パターンは複数あります
                 // [ここへ記述]
-
+                EmployeeBean employeeBean = new EmployeeBean(
+                        resultSet.getString("empId"),
+                        resultSet.getString("password"),
+                        resultSet.getString("name"),
+                        resultSet.getString("mail"),
+                        resultSet.getString("programingLanguage"),
+                        resultSet.getString("comment")
+                        );
                 // 社員情報リストへ追加
                 empResultList.add(employeeBean);
 
@@ -196,6 +203,7 @@ public final class EmployeeManagementService extends BaseService implements Empl
                     // 2. 1で作成したオブジェクトをpreparedStatementへ格納
                     // Tips: sbQueryは、sbQuery.toString()でStringへ変換
                     // [ここへ記述]
+                    super.preparedStatement = super.connection.prepareStatement(sbQuery.toString());
 
                     // LIKEを使用するため、パラメータを編集
                     final String empId = ExecuteCase.FIND_BY_EMPID_WITH_LIKE.equals(eCase)
@@ -205,10 +213,10 @@ public final class EmployeeManagementService extends BaseService implements Empl
                     // FIXME Step-5-6: preparedStatementに適切なパラメーターをセットしなさい。
                     // Tips: パラメータをセットするインデックスに注意
                     // [ここへ記述]
-
+                    preparedStatement.setString(1, emp.getEmpId());
                     // FIXME Step-5-7: preparedStatementよりSQL(SELECT文)を実行し、resultSetへ結果を格納しなさい。
                     // [ここへ記述]
-
+                    preparedStatement.setString(1, emp.getEmpId());
                     Logger.log(new Throwable(), "SQL: " +  super.preparedStatement.toString());
                 }
                 break;

@@ -148,8 +148,8 @@ public abstract class BaseServlet extends HttpServlet {
             // FIXME Step-3-3: 社員情報管理サービスより、社員情報を取得する処理を呼び出しなさい。
             // Tips1: 社員情報管理サービスはインスタンスが生成済みのものを利用すること
             // Tips2: 完全一致検索の社員情報取得を呼び出すこと
-            // ←ここへ記述
-        	ems.getEmployeeData(null, resEmployeeBean);
+            // ←ここへ記述e
+            this.responseBean =ems.getEmployeeData(ExecuteCase.FIND_BY_EMPID, new EmployeeBean(reqEmpId));
 
             // 最初の1件を取得
             resEmployeeBean = this.responseBean.getEmplyeeBeanList().stream().findFirst().orElse(null);
