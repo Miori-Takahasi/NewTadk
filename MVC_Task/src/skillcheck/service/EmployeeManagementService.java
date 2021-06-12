@@ -1,5 +1,6 @@
 package skillcheck.service;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -216,7 +217,7 @@ public final class EmployeeManagementService extends BaseService implements Empl
                     preparedStatement.setString(1, emp.getEmpId());
                     // FIXME Step-5-7: preparedStatementよりSQL(SELECT文)を実行し、resultSetへ結果を格納しなさい。
                     // [ここへ記述]
-                    preparedStatement.setString(1, emp.getEmpId());
+                    super.resultset = preparedStatement.executeQuery();
                     Logger.log(new Throwable(), "SQL: " +  super.preparedStatement.toString());
                 }
                 break;
